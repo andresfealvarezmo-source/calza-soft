@@ -1,22 +1,29 @@
-const mysql = require('mysql2');
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const correo = document.getElementById('correo').value;
+  const contrasena = document.getElementById('contrasena').value;
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-  ssl: {
-    rejectUnauthorized: false // Obligatorio para conectar con Aiven en la nube
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ correo, contrasena })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      localStorage.setItem('usuario', JSON.stringify(data.usuario));
+      if (data.usuario.rol === 'Administrador') {
+        window.location.href = 'admin_dashboard.html';
+      } else if (data.usuario.rol === 'Vendedor') {
+        window.location.href = 'vendedor_dashboard.html';
+      } else {
+        window.location.href = 'cliente_dashboard.html';
+      }
+    } else {
+      document.getElementById('errorMsg').textContent = data.error || 'Credenciales incorrectas';
+    }
+  } catch (err) {
+    document.getElementById('errorMsg').textContent = 'Error de conexión con el servidor.';
   }
 });
-
-connection.connect((err) => {
-  if (err) {
-    console.error('Error al conectar a la base de datos en la nube: ' + err.stack);
-    return;
-  }
-  console.log('¡Conectado exitosamente a la base de datos de Aiven! ID: ' + connection.threadId);
-});
-
-module.exports = connection;

@@ -11,13 +11,12 @@ const connection = mysql.createConnection({
   }
 });
 
-// Esto forzará al servidor a probar la conexión a Aiven apenas encienda
 connection.connect((err) => {
   if (err) {
-    console.error('❌ ERROR CRITICO DE CONEXION A AIVEN:', err);
+    console.error('❌ Error al conectar a la base de datos:', err);
     return;
   }
-  console.log('✅ ¡CONECTADO EXITOSAMENTE A LA BASE DE DATOS EN LA NUBE (AIVEN)!');
+  console.log('✅ Conectado exitosamente a la base de datos en la nube (Aiven)');
 });
 
 module.exports = connection;
