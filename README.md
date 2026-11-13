@@ -38,7 +38,7 @@ Abre el archivo `frontend/templates/login.html` directamente en tu navegador web
 ### 5. Credenciales de Demostración
 * **Administrador:** `admin@calzasoft.com` / `admin123`
 * **Vendedor:** `vendedor@calzasoft.com` / `vendedor123`
-* **Cliente:** `cliente@calzasoft.com` / `cliente123`
+
 
 ### 6. Ejecución de Pruebas Automatizadas
 ```bash
