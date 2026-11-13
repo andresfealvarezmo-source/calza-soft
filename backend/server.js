@@ -1,3 +1,4 @@
+require('dotenv').config(); // <-- Añadir esto en la primera línea
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
