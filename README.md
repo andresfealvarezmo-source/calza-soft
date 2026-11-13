@@ -30,7 +30,7 @@ npm install
 ```bash
 npm start
 ```
-El servidor se iniciará en `http://localhost:3000`.
+El servidor se iniciará en ``.
 
 ### 4. Acceso al Frontend
 Abre el archivo `frontend/templates/login.html` directamente en tu navegador web o sírvelo con un entorno local en Visual Studio Code (Live Server).

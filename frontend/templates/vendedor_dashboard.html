@@ -104,12 +104,12 @@
 
         async function cargarDatosVendedor() {
             try {
-                const res = await fetch('http://localhost:3000/api/productos');
+                const res = await fetch('');
                 const productos = await res.json();
                 const tbody = document.querySelector('#tablaVendedor tbody');
                 tbody.innerHTML = '';
                 productos.forEach(p => {
-                    const imgUrl = p.imagen ? `http://localhost:3000${p.imagen}` : 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300';
+                    const imgUrl = p.imagen ? `` : 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300';
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td><img src="${imgUrl}" alt="Zapato" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300'"></td>
@@ -129,7 +129,7 @@
 
         async function cargarPuntosVenta() {
             try {
-                const res = await fetch('http://localhost:3000/api/puntos-venta');
+                const res = await fetch('');
                 const puntos = await res.json();
                 const lista = document.getElementById('listaPuntosVendedor');
                 lista.innerHTML = '';
@@ -149,7 +149,7 @@
             const id = document.getElementById('idProductoStock').value;
             const cantidad = parseInt(document.getElementById('nuevaCantidad').value);
 
-            const res = await fetch(`http://localhost:3000/api/inventario/${id}`, {
+            const res = await fetch(``, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ cantidad })

@@ -183,7 +183,7 @@
 
         async function cargarCatalogo() {
             try {
-                const res = await fetch('http://localhost:3000/api/productos');
+                const res = await fetch('');
                 productosDisponibles = await res.json();
                 const tbody = document.querySelector('#tablaCatalogoCliente tbody');
                 tbody.innerHTML = '';
@@ -195,7 +195,7 @@
                         tallasOptions += `<option value="${t}" ${selected}>Talla ${t}</option>`;
                     }
 
-                    const imgUrl = p.imagen ? `http://localhost:3000${p.imagen}` : 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300';
+                    const imgUrl = p.imagen ? `` : 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300';
 
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
@@ -222,7 +222,7 @@
 
         async function cargarPuntosVenta() {
             try {
-                const res = await fetch('http://localhost:3000/api/puntos-venta');
+                const res = await fetch('');
                 const puntos = await res.json();
                 const lista = document.getElementById('listaPuntosCliente');
                 lista.innerHTML = '';
@@ -365,7 +365,7 @@
             };
 
             try {
-                const res = await fetch('http://localhost:3000/api/ventas', {
+                const res = await fetch('', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
